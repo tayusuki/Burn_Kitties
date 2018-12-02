@@ -8,19 +8,25 @@ public class Load : MonoBehaviour {
 
 
     internal static string loadPath = "save.dat";
+    public string LevelSelectName;
+
+    void Awake()
+    {
+        if (!File.Exists(Application.dataPath + "/Save Data/" + loadPath))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 
 	public void OnClick () {
         LoadNow();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(LevelSelectName);
+
 	}
 
     void LoadNow()
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
-
-        if (!File.Exists(Application.dataPath + "/Save Data/" + loadPath))
-        {
-            return;
-        }
 
         using (FileStream fileStream = new FileStream(Application.dataPath + "/Save Data/" + loadPath, FileMode.Open, FileAccess.Read))
         {

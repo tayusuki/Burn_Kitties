@@ -6,7 +6,6 @@ public class GameQuit : MonoBehaviour {
 
 	public void OnClick()
     {
-        Save.SaveNow();
         Application.Quit();
     }
 }

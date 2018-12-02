@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelButton : MonoBehaviour {
 
     public int levelNumber;
+    public string levelSelector;
     public bool isLocked = false;
 
     void Start()
@@ -18,6 +19,13 @@ public class LevelButton : MonoBehaviour {
 
 	public void OnClick()
     {
-        SceneManager.LoadScene(levelNumber);
+        Save.SaveNow();
+        SceneManager.LoadScene(levelNumber.ToString());
+    }
+
+    public void OnClick2()
+    {
+        Save.SaveNow();
+        SceneManager.LoadScene(levelSelector);
     }
 }

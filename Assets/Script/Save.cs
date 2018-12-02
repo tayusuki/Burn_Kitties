@@ -6,11 +6,16 @@ using UnityEngine;
 
 public static class Save {
 
-    //Should be called when the game is quit, or when a level is completed
+    //Should be called when a level is completed
 
 	internal static void SaveNow()
     {
         BinaryFormatter binaryFormatter = new BinaryFormatter();
+
+        if (!Directory.Exists(Application.dataPath + "/Save Data"))
+        {
+            Directory.CreateDirectory(Application.dataPath + "/Save Data");
+        }
 
         using (FileStream fileStream = new FileStream(Application.dataPath + "/Save Data/" + Load.loadPath, FileMode.Create, FileAccess.Write))
         {
