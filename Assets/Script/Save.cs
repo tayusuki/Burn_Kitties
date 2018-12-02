@@ -6,7 +6,8 @@ using UnityEngine;
 
 public static class Save {
 
-    //Should be called when a level is completed
+    // Should be called when a level is completed or a new game is started
+    // Does not need to be attached
 
 	internal static void SaveNow()
     {

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class LevelVictory : MonoBehaviour {
 
+    // Attach to trigger volume
+
+    // Need to call the function
+
     public int parNumberOfKitties;
     public int level;
 

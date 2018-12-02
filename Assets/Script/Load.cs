@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Load : MonoBehaviour {
 
+    // Attach to Load button on Start Menu
 
     internal static string loadPath = "save.dat";
     public string LevelSelectName;

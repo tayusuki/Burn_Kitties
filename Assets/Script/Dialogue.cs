@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class Dialogue : MonoBehaviour {
 
-    //attach to player
+    // Attach to player
 
     public List<string> random = new List<string>();
     public List<string> whenCatsAreSacrificed = new List<string>();
     public List<string> victory = new List<string>();
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Under certain conditions, the textbox near the player will display text
+    // Determine these conditions and change the text TextboxBehaviour.text
+    // Call TextboxBehaviour.SaySomething()
 }
