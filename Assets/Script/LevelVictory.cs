@@ -17,6 +17,12 @@ public class LevelVictory : MonoBehaviour {
 
     public GameObject panel;
 
+    void Start()
+    {
+        GameManager.hasWon = false;
+        Time.timeScale = 1;
+    }
+
 	internal void WonLevel()
     {
         if(level + 1 < GameManager.levels.Length) GameManager.levels[level + 1] = true;

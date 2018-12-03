@@ -31,6 +31,7 @@ public static class Save {
             }
 
             binaryFormatter.Serialize(fileStream, GameManager.isNewGame);
+            binaryFormatter.Serialize(fileStream, GameManager.counter);
         }
     }
 }

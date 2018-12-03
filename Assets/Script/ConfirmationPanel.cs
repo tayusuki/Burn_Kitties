@@ -11,15 +11,18 @@ public class ConfirmationPanel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameObject.Find("EventSystem").GetComponent<EventSystem>();
-        eventS.SetSelectedGameObject(button);
-	}
+        //GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        //eventS.SetSelectedGameObject(button);
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(button);
+        button.GetComponent<Button>().Select();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if ((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.Mouse3)) && GameManager.hasWon)
         {
-            eventS.SetSelectedGameObject(button);
+            GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(button);
         }
     }
 }

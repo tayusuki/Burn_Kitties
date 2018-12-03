@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class NewGameMenu : MonoBehaviour {
 	
-    void Start()
+    void Awake()
     {
         if (!GameManager.isNewGame)
+        {
             Destroy(this.gameObject);
-        Time.timeScale = 0;
+        }
+        else
+            Time.timeScale = 0;
     }
 	// Update is called once per frame
 	void Update () {

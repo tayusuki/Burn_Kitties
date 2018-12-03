@@ -12,19 +12,23 @@ public class LevelButton : MonoBehaviour {
     public string levelSelector;
     public bool isLocked = false;
     public int maxExtras = 10;
+    public bool isConfirmation;
 
     void Start()
     {
-        if (GameManager.levels[levelNumber] && levelNumber != 99)
+        if (!isConfirmation)
         {
-            isLocked = false;
-            GetComponentInChildren<Text>().text = GameManager.extras[levelNumber] + "/" + maxExtras;
-        }
-        else
-        {
-            isLocked = true;
-            GetComponentInChildren<Text>().text = GameManager.extras[levelNumber] + "/" + maxExtras;
-            GetComponent<Button>().interactable = false;
+            if (GameManager.levels[levelNumber] && levelNumber != 99)
+            {
+                isLocked = false;
+                GetComponentInChildren<Text>().text = GameManager.extras[levelNumber].ToString();
+            }
+            else
+            {
+                isLocked = true;
+                GetComponentInChildren<Text>().text = GameManager.extras[levelNumber].ToString();
+                GetComponent<Button>().interactable = false;
+            }
         }
     }
 
