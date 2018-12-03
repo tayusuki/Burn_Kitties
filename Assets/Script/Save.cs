@@ -24,6 +24,13 @@ public static class Save {
             {
                 binaryFormatter.Serialize(fileStream, GameManager.levels[i]);
             }
+
+            for (int i = 0; i < GameManager.extras.Length; i++)
+            {
+                binaryFormatter.Serialize(fileStream, GameManager.extras[i]);
+            }
+
+            binaryFormatter.Serialize(fileStream, GameManager.isNewGame);
         }
     }
 }

@@ -21,13 +21,11 @@ public class LevelButton : MonoBehaviour {
 
 	public void OnClick()
     {
-        Save.SaveNow();
         SceneManager.LoadScene(levelNumber.ToString());
     }
 
     public void OnClick2()
     {
-        Save.SaveNow();
         SceneManager.LoadScene(levelSelector);
     }
 }
