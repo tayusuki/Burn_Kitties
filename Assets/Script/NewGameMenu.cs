@@ -18,6 +18,7 @@ public class NewGameMenu : MonoBehaviour {
         if (Input.GetButtonDown("Pause"))
         {
             GameManager.isNewGame = false;
+            GameManager.counter++;
             Save.SaveNow();
             Time.timeScale = 1;
             Destroy(this.gameObject);

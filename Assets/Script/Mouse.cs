@@ -18,10 +18,5 @@ public class Mouse : MonoBehaviour {
         {
             GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(GameObject.Find("EventSystem").GetComponent<EventSystem>().firstSelectedGameObject);
         }
-
-        if (Input.GetButtonDown("Pause"))
-        {
-            GameManager.counter++;
-        }
     }
 }
