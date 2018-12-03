@@ -82,7 +82,8 @@ public class PlayerPickup : MonoBehaviour {
 	}
 
 	IEnumerator AddGato(GameObject targetGato){
-		sndPlayer.PlayOneShot(nyanSnd[Random.Range(0,nyanSnd.Length)]);
+        //GameObject.FindObjectOfType<Dialogue>().SaySomething(4);
+        sndPlayer.PlayOneShot(nyanSnd[Random.Range(0,nyanSnd.Length)]);
 		storedCats.Add (targetGato);
 		targetGato.SetActive(false);
 		yield return new WaitForEndOfFrame ();

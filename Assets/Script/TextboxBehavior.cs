@@ -32,12 +32,12 @@ public class TextboxBehavior : MonoBehaviour {
 		
 	}
 
-    void SaySomething()
+    internal void SaySomething()
     {
         //enable textbox
         textbox.gameObject.SetActive(true);
         //animate text (stop all coroutines, in case another event triggers a box)
-        StopCoroutine(animator);
+        StopAllCoroutines();
 
         animator = AnimateText();
         StartCoroutine(animator);

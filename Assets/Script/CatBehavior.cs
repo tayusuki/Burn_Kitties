@@ -97,6 +97,7 @@ public class CatBehavior : MonoBehaviour {
 
 	public void Thrown(){
 		anim.SetTrigger ("Thrown");
+        //GameObject.FindObjectOfType<Dialogue>().SaySomething(3);
 		sleeping = false;
 		thrown = true;
 	}
@@ -113,7 +114,8 @@ public class CatBehavior : MonoBehaviour {
 
 	public IEnumerator Kill(){
 		if (!dead) {
-			sndPlayer.PlayOneShot (dieSnd);
+            //GameObject.FindObjectOfType<Dialogue>().SaySomething(2);
+            sndPlayer.PlayOneShot (dieSnd);
 			dead = true;
 			rb.velocity = Vector2.zero;
 			rb.isKinematic = true;
