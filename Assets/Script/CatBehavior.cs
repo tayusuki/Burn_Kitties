@@ -31,7 +31,14 @@ public class CatBehavior : MonoBehaviour {
 	public ParticleSystem fire;
 	public ParticleSystem smoke;
 
+	private AudioSource sndPlayer;
+	public AudioClip[] nyan;
+	public AudioClip thudSnd;
+	public AudioClip dieSnd;
+	public AudioClip extinguishSnd;
+
 	void Start () {
+		sndPlayer = GetComponent<AudioSource> ();
 		anim = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
 		runTime = runTimer;
@@ -63,6 +70,7 @@ public class CatBehavior : MonoBehaviour {
 
 		if (thrown) {
 			if (m_Grounded) {
+				sndPlayer.PlayOneShot (thudSnd);
 				thrown = false;
 			}
 		}
@@ -94,6 +102,7 @@ public class CatBehavior : MonoBehaviour {
 	public void Thrown(){
 		anim.SetTrigger ("Thrown");
 		sleeping = false;
+		thrown = true;
 	}
 
 	void Flip(){
@@ -108,6 +117,7 @@ public class CatBehavior : MonoBehaviour {
 
 	public IEnumerator Kill(){
 		if (!dead) {
+			sndPlayer.PlayOneShot (dieSnd);
 			dead = true;
 			rb.velocity = Vector2.zero;
 			rb.isKinematic = true;
@@ -117,6 +127,7 @@ public class CatBehavior : MonoBehaviour {
 			yield return new WaitForSeconds (2f);
 			GetComponent<SpriteRenderer> ().sortingOrder = -1;
 			smoke.Play ();
+			sndPlayer.PlayOneShot (extinguishSnd);
 		}
 	}
 }

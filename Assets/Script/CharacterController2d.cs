@@ -31,8 +31,13 @@ public class CharacterController2d : MonoBehaviour {
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
 
+	private AudioSource sndPlayer;
+	public AudioClip jumpSnd;
+	public AudioClip landSnd;
+
 	private void Awake()
 	{
+		sndPlayer = GetComponent<AudioSource> ();
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 		anim = GetComponent<Animator> ();
 
@@ -53,13 +58,16 @@ public class CharacterController2d : MonoBehaviour {
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
-				if (!wasGrounded)
-					OnLandEvent.Invoke();
+				if (!wasGrounded) {
+					sndPlayer.PlayOneShot (landSnd);
+					OnLandEvent.Invoke ();
+				}
 			}
 		}
 	}
 
 	void Update(){
+		/*
 		if (Input.GetKeyDown (KeyCode.Q)) {
 			if (Time.timeScale == 1f) {
 				Time.timeScale = 0.25f;
@@ -67,6 +75,7 @@ public class CharacterController2d : MonoBehaviour {
 				Time.timeScale = 1;
 			}
 		}
+		*/
 		if (canControl) {
 			Move (Input.GetAxis ("Horizontal") * Speed, Input.GetButtonDown ("Jump"));
 		}
@@ -102,6 +111,7 @@ public class CharacterController2d : MonoBehaviour {
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce - jumpWeight));
+			sndPlayer.PlayOneShot (jumpSnd);
 		}
 		anim.SetFloat ("Speed", Mathf.Abs(move));
 		anim.SetBool ("Grounded", m_Grounded);

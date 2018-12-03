@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerPickup : MonoBehaviour {
 
@@ -23,10 +24,16 @@ public class PlayerPickup : MonoBehaviour {
 	public Text catDisplay;
 	private int levelPar;
 
+	private AudioSource sndPlayer;
+	public AudioClip throwSnd;
+	public AudioClip pickupSnd;
+	public AudioClip[] nyanSnd;
+
 	void Start () {
 		anim = GetComponent<Animator> ();
 		controller = GetComponent<CharacterController2d> ();
 		levelPar = FindObjectOfType<LevelFinsih> ().catsNeededToFinish;
+		sndPlayer = GetComponent<AudioSource> ();
 	}
 	
 	void Update () {
@@ -37,10 +44,11 @@ public class PlayerPickup : MonoBehaviour {
 				}
 			}
 
-			if (Input.GetKeyDown (KeyCode.V)) {
-				//RemoveTopGato ();
+			if (Input.GetButtonDown ("Restart")) {
+				Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
 			}
-			if (Input.GetKeyDown (KeyCode.C)) {
+
+			if (Input.GetButtonDown ("Fire3")) {
 				if (heldCats.Count > 0 && catAddingInstance == null) {
 					catAddingInstance = StartCoroutine (ThrowGato ());
 				}
@@ -69,11 +77,12 @@ public class PlayerPickup : MonoBehaviour {
 				}
 			}
 		}
-		Debug.Log (closeCat);
+		//Debug.Log (closeCat);
 		return closeCat;
 	}
 
 	IEnumerator AddGato(GameObject targetGato){
+		sndPlayer.PlayOneShot(nyanSnd[Random.Range(0,nyanSnd.Length)]);
 		storedCats.Add (targetGato);
 		targetGato.SetActive(false);
 		yield return new WaitForEndOfFrame ();
@@ -102,19 +111,30 @@ public class PlayerPickup : MonoBehaviour {
 		anim.SetTrigger ("Throw");
 		if (GetComponent<CharacterController2d> ().m_FacingRight) {
 			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-			storedCats [storedCats.Count - 1].transform.position = transform.position + (Vector3.up * 1.5f) + (Vector3.right*1f);
+			if (Physics2D.OverlapCircleAll (new Vector2 (transform.position.x + 0.25f, transform.position.y + 1.5f), 0.4f, ignoreCheck).Length == 0) {
+				storedCats [storedCats.Count - 1].transform.position = transform.position + (Vector3.up * 1.5f) + (Vector3.right * 1f);
+			} else  {
+				Debug.Log ("hitwall");
+				storedCats [storedCats.Count - 1].transform.position = transform.position + (Vector3.up * 1.5f) + (Vector3.right * 0.25f);
+			}
 			yield return new WaitForSeconds(0.1f);
 			storedCats [storedCats.Count - 1].SetActive (enabled);
 			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().AddForce(new Vector2(throwStrength, throwStrength * 0.5f), ForceMode2D.Impulse);
 			storedCats [storedCats.Count - 1].GetComponent<CatBehavior>().Thrown();
 		} else {
 			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-			storedCats [storedCats.Count - 1].transform.position = transform.position + (Vector3.up * 1.5f) + (Vector3.left*1f);
+			if (Physics2D.OverlapCircleAll (new Vector2 (transform.position.x - 0.25f, transform.position.y + 1.5f), 0.4f, ignoreCheck).Length == 0) {
+				storedCats [storedCats.Count - 1].transform.position = transform.position + (Vector3.up * 1.5f) + (Vector3.left * 1f);
+			} else {
+				Debug.Log ("hitwall");
+				storedCats [storedCats.Count - 1].transform.position = transform.position + (Vector3.up * 1.5f) + (Vector3.left * 0.25f);
+			}
 			yield return new WaitForSeconds(0.1f);
 			storedCats [storedCats.Count - 1].SetActive (enabled);
 			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().AddForce(new Vector2(-throwStrength, throwStrength * 0.5f), ForceMode2D.Impulse);
 			storedCats [storedCats.Count - 1].GetComponent<CatBehavior>().Thrown();
 		}
+		sndPlayer.PlayOneShot(throwSnd);
 		catAddingInstance = StartCoroutine (RemoveBotGato ());
 	}
 

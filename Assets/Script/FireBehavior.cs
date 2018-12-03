@@ -16,7 +16,7 @@ public class FireBehavior : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D hit) {
 		if (hit.tag == "Cat") {
-			hit.transform.position = transform.position + (Vector3.up * catHeight);
+			hit.transform.position = new Vector3 (hit.transform.position.x, transform.position.y + catHeight, hit.transform.position.z);// transform.position + (Vector3.up * catHeight);
 			StartCoroutine(hit.GetComponent<CatBehavior> ().Kill ());
 		}
 		if (hit.tag == "Player") {
