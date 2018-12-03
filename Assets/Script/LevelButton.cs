@@ -23,6 +23,7 @@ public class LevelButton : MonoBehaviour {
         else
         {
             isLocked = true;
+            GetComponentInChildren<Text>().text = GameManager.extras[levelNumber] + "/" + maxExtras;
             GetComponent<Button>().interactable = false;
         }
     }

@@ -15,6 +15,7 @@ public class LevelVictory : MonoBehaviour {
     public int currentNumberOfKitties;
 
     public Text hud;
+    public GameObject panel;
 
 	internal void WonLevel()
     {
@@ -27,17 +28,5 @@ public class LevelVictory : MonoBehaviour {
 
         //Change this to whatever the scene number is for the loading scene
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-    }
-
-    internal void PickUp()
-    {
-        currentNumberOfKitties++;
-        hud.text = currentNumberOfKitties + "/" + parNumberOfKitties;
-    }
-
-    internal void Drop()
-    {
-        currentNumberOfKitties--;
-        hud.text = currentNumberOfKitties + "/" + parNumberOfKitties;
     }
 }
