@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelVictory : MonoBehaviour {
 
@@ -8,9 +9,12 @@ public class LevelVictory : MonoBehaviour {
 
     // Need to call the function
 
+
     public int parNumberOfKitties;
     public int level;
     public int currentNumberOfKitties;
+
+    public Text hud;
 
 	internal void WonLevel()
     {
@@ -23,5 +27,17 @@ public class LevelVictory : MonoBehaviour {
 
         //Change this to whatever the scene number is for the loading scene
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    internal void PickUp()
+    {
+        currentNumberOfKitties++;
+        hud.text = currentNumberOfKitties + "/" + parNumberOfKitties;
+    }
+
+    internal void Drop()
+    {
+        currentNumberOfKitties--;
+        hud.text = currentNumberOfKitties + "/" + parNumberOfKitties;
     }
 }

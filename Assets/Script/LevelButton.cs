@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelButton : MonoBehaviour {
 
@@ -10,13 +11,20 @@ public class LevelButton : MonoBehaviour {
     public int levelNumber;
     public string levelSelector;
     public bool isLocked = false;
+    public int maxExtras = 10;
 
     void Start()
     {
-        if (GameManager.levels[levelNumber])
+        if (GameManager.levels[levelNumber] && levelNumber != 99)
+        {
             isLocked = false;
+            GetComponentInChildren<Text>().text = GameManager.extras[levelNumber] + "/" + maxExtras;
+        }
         else
+        {
             isLocked = true;
+            GetComponent<Button>().interactable = false;
+        }
     }
 
 	public void OnClick()

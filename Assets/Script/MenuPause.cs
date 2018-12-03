@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MenuPause : MonoBehaviour {
 
@@ -18,6 +19,7 @@ public class MenuPause : MonoBehaviour {
             else
             {
                 pauseMenu.SetActive(true);
+                GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(GameObject.Find("EventSystem").GetComponent<EventSystem>().firstSelectedGameObject);
                 Time.timeScale = 0;
             }
         }
