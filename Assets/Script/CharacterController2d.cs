@@ -20,6 +20,7 @@ public class CharacterController2d : MonoBehaviour {
 	private Rigidbody2D m_Rigidbody2D;
 	internal bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
+	private Animator anim;
 
 	[Header("Events")]
 	[Space]
@@ -32,6 +33,7 @@ public class CharacterController2d : MonoBehaviour {
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		anim = GetComponent<Animator> ();
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
@@ -99,6 +101,8 @@ public class CharacterController2d : MonoBehaviour {
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce - jumpWeight));
 		}
+		anim.SetFloat ("Speed", Mathf.Abs(move));
+		anim.SetBool ("Grounded", m_Grounded);
 	}
 
 

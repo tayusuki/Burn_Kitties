@@ -15,8 +15,10 @@ public class PlayerPickup : MonoBehaviour {
 	public LayerMask ignoreCheck;
 	[Range(0,1)] public float maxLean = 0.5f;
 
+	Animator anim;
+
 	void Start () {
-		
+		anim = GetComponent<Animator> ();
 	}
 	
 	void Update () {
@@ -37,6 +39,11 @@ public class PlayerPickup : MonoBehaviour {
 
 		//do this on add/subtract cat when you are less sleepy
 		GetComponent<CharacterController2d>().jumpWeight = heldCats.Count * 25f;
+		if (heldCats.Count > 0) {
+			anim.SetBool ("Holding", true);
+		} else {
+			anim.SetBool ("Holding", !true);
+		}
 	}
 
 	GameObject FindClosestGato(){
