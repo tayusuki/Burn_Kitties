@@ -34,6 +34,9 @@ public class PlayerPickup : MonoBehaviour {
 				StartCoroutine(ThrowGato());
 			}
 		}
+
+		//do this on add/subtract cat when you are less sleepy
+		GetComponent<CharacterController2d>().jumpWeight = heldCats.Count * 25f;
 	}
 
 	GameObject FindClosestGato(){
@@ -79,13 +82,13 @@ public class PlayerPickup : MonoBehaviour {
 			storedCats [storedCats.Count - 1].transform.position = transform.position + (Vector3.up * 1.5f) + (Vector3.right*1f);
 			yield return new WaitForSeconds(0.1f);
 			storedCats [storedCats.Count - 1].SetActive (enabled);
-			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().AddForce(Vector2.right * 10f, ForceMode2D.Impulse);
+			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().AddForce(new Vector2(10f, 3f), ForceMode2D.Impulse);
 		} else {
 			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 			storedCats [storedCats.Count - 1].transform.position = transform.position + (Vector3.up * 1.5f) + (Vector3.left*1f);
 			yield return new WaitForSeconds(0.1f);
 			storedCats [storedCats.Count - 1].SetActive (enabled);
-			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().AddForce(Vector2.right * -10f, ForceMode2D.Impulse);
+			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().AddForce(new Vector2(-10f, 3f), ForceMode2D.Impulse);
 		}
 		catAddingInstance = StartCoroutine (RemoveBotGato ());
 	}

@@ -7,6 +7,7 @@ public class CharacterController2d : MonoBehaviour {
 
 	[Range(0, 1f)]  public float Speed = 0.5f;
 	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
+	internal float jumpWeight = 0f;
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
 	public LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
@@ -96,7 +97,7 @@ public class CharacterController2d : MonoBehaviour {
 		{
 			// Add a vertical force to the player.
 			m_Grounded = false;
-			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce - jumpWeight));
 		}
 	}
 
