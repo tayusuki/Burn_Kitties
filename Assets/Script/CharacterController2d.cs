@@ -21,6 +21,7 @@ public class CharacterController2d : MonoBehaviour {
 	internal bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 	private Animator anim;
+	public bool canControl = true;
 
 	[Header("Events")]
 	[Space]
@@ -66,8 +67,9 @@ public class CharacterController2d : MonoBehaviour {
 				Time.timeScale = 1;
 			}
 		}
-
-		Move (Input.GetAxis("Horizontal") * Speed, Input.GetButtonDown("Jump"));
+		if (canControl) {
+			Move (Input.GetAxis ("Horizontal") * Speed, Input.GetButtonDown ("Jump"));
+		}
 	}
 
 

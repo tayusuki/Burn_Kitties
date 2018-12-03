@@ -14,35 +14,40 @@ public class PlayerPickup : MonoBehaviour {
 
 	public LayerMask ignoreCheck;
 	[Range(0,1)] public float maxLean = 0.5f;
+	public float throwStrength = 8f;
 
+	CharacterController2d controller;
 	Animator anim;
 
 	void Start () {
 		anim = GetComponent<Animator> ();
+		controller = GetComponent<CharacterController2d> ();
 	}
 	
 	void Update () {
-		if (Input.GetButtonDown ("Fire1")) {
-			if (catAddingInstance == null && FindClosestGato() != null) {
-				catAddingInstance = StartCoroutine (AddGato (FindClosestGato()));
+		if (controller.canControl) {
+			if (Input.GetButtonDown ("Fire1")) {
+				if (catAddingInstance == null && FindClosestGato () != null) {
+					catAddingInstance = StartCoroutine (AddGato (FindClosestGato ()));
+				}
 			}
-		}
 
-		if (Input.GetKeyDown (KeyCode.V)) {
-			//RemoveTopGato ();
-		}
-		if (Input.GetKeyDown (KeyCode.C)) {
-			if (heldCats.Count > 0 && catAddingInstance == null) {
-				StartCoroutine(ThrowGato());
+			if (Input.GetKeyDown (KeyCode.V)) {
+				//RemoveTopGato ();
 			}
-		}
+			if (Input.GetKeyDown (KeyCode.C)) {
+				if (heldCats.Count > 0 && catAddingInstance == null) {
+					catAddingInstance = StartCoroutine (ThrowGato ());
+				}
+			}
 
-		//do this on add/subtract cat when you are less sleepy
-		GetComponent<CharacterController2d>().jumpWeight = heldCats.Count * 25f;
-		if (heldCats.Count > 0) {
-			anim.SetBool ("Holding", true);
-		} else {
-			anim.SetBool ("Holding", !true);
+			//do this on add/subtract cat when you are less sleepy
+			GetComponent<CharacterController2d> ().jumpWeight = heldCats.Count * 25f;
+			if (heldCats.Count > 0) {
+				anim.SetBool ("Holding", true);
+			} else {
+				anim.SetBool ("Holding", !true);
+			}
 		}
 	}
 
@@ -80,22 +85,27 @@ public class PlayerPickup : MonoBehaviour {
 				yield return new WaitForEndOfFrame ();
 			}
 		}
+
 		catAddingInstance = null;
 	}
 
 	IEnumerator ThrowGato(){
+		GetComponent<Rigidbody2D> ().velocity = Vector3.zero;
+		anim.SetTrigger ("Throw");
 		if (GetComponent<CharacterController2d> ().m_FacingRight) {
 			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 			storedCats [storedCats.Count - 1].transform.position = transform.position + (Vector3.up * 1.5f) + (Vector3.right*1f);
 			yield return new WaitForSeconds(0.1f);
 			storedCats [storedCats.Count - 1].SetActive (enabled);
-			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().AddForce(new Vector2(10f, 3f), ForceMode2D.Impulse);
+			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().AddForce(new Vector2(throwStrength, throwStrength * 0.5f), ForceMode2D.Impulse);
+			storedCats [storedCats.Count - 1].GetComponent<CatBehavior>().Thrown();
 		} else {
 			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 			storedCats [storedCats.Count - 1].transform.position = transform.position + (Vector3.up * 1.5f) + (Vector3.left*1f);
 			yield return new WaitForSeconds(0.1f);
 			storedCats [storedCats.Count - 1].SetActive (enabled);
-			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().AddForce(new Vector2(-10f, 3f), ForceMode2D.Impulse);
+			storedCats [storedCats.Count - 1].GetComponent<Rigidbody2D>().AddForce(new Vector2(-throwStrength, throwStrength * 0.5f), ForceMode2D.Impulse);
+			storedCats [storedCats.Count - 1].GetComponent<CatBehavior>().Thrown();
 		}
 		catAddingInstance = StartCoroutine (RemoveBotGato ());
 	}
