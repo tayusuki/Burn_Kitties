@@ -23,7 +23,7 @@ public class CatBehavior : MonoBehaviour {
 	public PhysicsMaterial2D slippyMat;
 
 
-	const float k_GroundedRadius = .35f;
+	const float k_GroundedRadius = .4f;
 	public LayerMask m_WhatIsGround;							
 	public bool m_Grounded;
 	public Transform m_GroundCheck;
@@ -73,10 +73,6 @@ public class CatBehavior : MonoBehaviour {
 				sndPlayer.PlayOneShot (thudSnd);
 				thrown = false;
 			}
-		}
-
-		if (Input.GetKeyDown (KeyCode.B)) {
-			StartCoroutine(Kill ());
 		}
 	}
 
