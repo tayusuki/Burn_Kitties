@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class TextboxBehavior : MonoBehaviour {
 
-    // Attach to Player 
+    // Attach to Textbox (child of player) 
 
-    public Text textbox;
+    Text textbox;
     internal string text;
     IEnumerator animator;
 
