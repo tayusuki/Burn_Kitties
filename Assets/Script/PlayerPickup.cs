@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPickup : MonoBehaviour {
 
@@ -19,9 +20,13 @@ public class PlayerPickup : MonoBehaviour {
 	CharacterController2d controller;
 	Animator anim;
 
+	public Text catDisplay;
+	private int levelPar;
+
 	void Start () {
 		anim = GetComponent<Animator> ();
 		controller = GetComponent<CharacterController2d> ();
+		levelPar = FindObjectOfType<LevelFinsih> ().catsNeededToFinish;
 	}
 	
 	void Update () {
@@ -48,6 +53,9 @@ public class PlayerPickup : MonoBehaviour {
 			} else {
 				anim.SetBool ("Holding", !true);
 			}
+		}
+		if (catDisplay != null) {
+			catDisplay.text = heldCats.Count + "/" + levelPar;
 		}
 	}
 

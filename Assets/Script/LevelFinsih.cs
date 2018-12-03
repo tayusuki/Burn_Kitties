@@ -15,7 +15,7 @@ public class LevelFinsih : MonoBehaviour {
 		if (hit.tag == "Player") {
 			Debug.Log (hit.GetComponent<PlayerPickup> ().heldCats.Count);
 			if (hit.GetComponent<PlayerPickup> ().heldCats.Count >= catsNeededToFinish) {
-				Debug.Log ("You win");			
+				Debug.Log ("You win with " + hit.GetComponent<PlayerPickup> ().heldCats.Count + " many cats.");			
 			} else {
 				StartCoroutine(ShowText ());
 			}
