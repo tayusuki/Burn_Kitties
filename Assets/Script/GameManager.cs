@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     internal static bool[] levels = new bool[] { true, true, false, false, false, false, false, false, false, false, false, false };
     internal static int[] extras = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     internal static bool isNewGame = true;
+    internal static bool hasWon = false;
 
     void Start()
     {

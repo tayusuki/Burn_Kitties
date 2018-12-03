@@ -9,7 +9,7 @@ public class MenuPause : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Pause"))
+        if (Input.GetButtonDown("Pause") && !GameManager.hasWon)
         {
             if (pauseMenu.activeInHierarchy)
             {

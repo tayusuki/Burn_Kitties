@@ -425,7 +425,7 @@ MonoBehaviour:
   parNumberOfKitties: 0
   level: 0
   currentNumberOfKitties: 0
-  hud: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!224 &618813206
 RectTransform:
   m_ObjectHideFlags: 0

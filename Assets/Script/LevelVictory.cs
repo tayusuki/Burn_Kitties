@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelVictory : MonoBehaviour {
 
-    // Attach to trigger volume
+    // Attach to player
 
     // Need to call the function
 
@@ -14,7 +15,6 @@ public class LevelVictory : MonoBehaviour {
     public int level;
     public int currentNumberOfKitties;
 
-    public Text hud;
     public GameObject panel;
 
 	internal void WonLevel()
@@ -26,7 +26,14 @@ public class LevelVictory : MonoBehaviour {
         }
         Save.SaveNow();
 
+        if(level == 11)
+        {
+            SceneManager.LoadScene("LevelSelector");
+        }
+
         //Change this to whatever the scene number is for the loading scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        Time.timeScale = 0;
+        panel.SetActive(true);
+        GameManager.hasWon = true;
     }
 }

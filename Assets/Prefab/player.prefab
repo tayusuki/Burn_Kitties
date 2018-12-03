@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 95570842834723226}
   - component: {fileID: 114870587555224198}
   - component: {fileID: 82640693509650582}
+  - component: {fileID: 114696172643245336}
   m_Layer: 8
   m_Name: player
   m_TagString: Player
@@ -113,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1155575564372916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.25, y: 2.1, z: 0}
+  m_LocalPosition: {x: -5.25, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4541962780834664}
@@ -298,6 +299,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114696172643245336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155575564372916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa79053ba7a6e1a4d9e5a571f9edd547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parNumberOfKitties: 0
+  level: 0
+  currentNumberOfKitties: 0
+  panel: {fileID: 0}
 --- !u!114 &114779345817738738
 MonoBehaviour:
   m_ObjectHideFlags: 1
