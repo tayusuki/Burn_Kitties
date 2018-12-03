@@ -7,7 +7,7 @@ public class NewGameMenu : MonoBehaviour {
     void Start()
     {
         if (!GameManager.isNewGame)
-            Destroy(this);
+            Destroy(this.gameObject);
         Time.timeScale = 0;
     }
 	// Update is called once per frame
@@ -17,7 +17,7 @@ public class NewGameMenu : MonoBehaviour {
             GameManager.isNewGame = false;
             Save.SaveNow();
             Time.timeScale = 1;
-            Destroy(this);
+            Destroy(this.gameObject);
         }
 	}
 }
