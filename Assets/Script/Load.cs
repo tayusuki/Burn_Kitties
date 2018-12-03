@@ -35,6 +35,13 @@ public class Load : MonoBehaviour {
             {
                 GameManager.levels[i] = (bool)binaryFormatter.Deserialize(fileStream);
             }
+
+            for (int i = 0; i < GameManager.extras.Length; i++)
+            {
+                GameManager.extras[i] = (int)binaryFormatter.Deserialize(fileStream);
+            }
+
+            GameManager.isNewGame = (bool)binaryFormatter.Deserialize(fileStream);
         }
     }
 }

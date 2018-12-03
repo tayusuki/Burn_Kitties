@@ -13,9 +13,13 @@ public class MenuPause : MonoBehaviour {
             if (pauseMenu.activeInHierarchy)
             {
                 pauseMenu.SetActive(false);
+                Time.timeScale = 1;
             }
             else
+            {
                 pauseMenu.SetActive(true);
+                Time.timeScale = 0;
+            }
         }
 	}
 }

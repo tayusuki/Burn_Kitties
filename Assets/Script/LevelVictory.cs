@@ -10,10 +10,15 @@ public class LevelVictory : MonoBehaviour {
 
     public int parNumberOfKitties;
     public int level;
+    public int currentNumberOfKitties;
 
 	internal void WonLevel()
     {
         if(level + 1 < GameManager.levels.Length) GameManager.levels[level + 1] = true;
+        if(currentNumberOfKitties > parNumberOfKitties)
+        {
+            GameManager.extras[level] = currentNumberOfKitties - parNumberOfKitties;
+        }
         Save.SaveNow();
 
         //Change this to whatever the scene number is for the loading scene
