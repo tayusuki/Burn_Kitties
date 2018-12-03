@@ -365,8 +365,11 @@ MonoBehaviour:
   throwSnd: {fileID: 8300000, guid: d359ea2eab8d1da4aa78c00ae9c76cb4, type: 3}
   pickupSnd: {fileID: 8300000, guid: 8e5f5a200c7656a4e8cb4819c3553324, type: 3}
   nyanSnd:
-  - {fileID: 8300000, guid: 8e5f5a200c7656a4e8cb4819c3553324, type: 3}
-  - {fileID: 8300000, guid: b666ebcd3c7535449abb116b0bc5f5ef, type: 3}
+  - {fileID: 8300000, guid: 056a3c20e22239048b0b3541ffc3859c, type: 3}
+  - {fileID: 8300000, guid: 27c7da04459f0e340a96a86aef223047, type: 3}
+  - {fileID: 8300000, guid: fa777095db61fb342bcd6540828fc0c3, type: 3}
+  - {fileID: 8300000, guid: 7038fbc150282d24f99135d566eb46eb, type: 3}
+  - {fileID: 8300000, guid: ea1128a56d0a7544ba32ce29c37d4254, type: 3}
 --- !u!212 &212172311892583956
 SpriteRenderer:
   m_ObjectHideFlags: 1
