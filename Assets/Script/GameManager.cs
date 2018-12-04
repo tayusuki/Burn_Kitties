@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     internal static bool isNewGame = true;
     internal static bool hasWon = false;
     internal static int counter = 0;
+    internal static bool beatGame = false;
 
     void Start()
     {

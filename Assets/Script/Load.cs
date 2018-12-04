@@ -43,6 +43,7 @@ public class Load : MonoBehaviour {
 
             GameManager.isNewGame = (bool)binaryFormatter.Deserialize(fileStream);
             GameManager.counter = (int)binaryFormatter.Deserialize(fileStream);
+            GameManager.beatGame = (bool)binaryFormatter.Deserialize(fileStream);
         }
     }
 }
