@@ -6,6 +6,7 @@ public class LevelFinsih : MonoBehaviour {
 
 	public int catsNeededToFinish = 1;
 	public TextMesh needMoreText;
+    public bool lastLev = false;
 
 	void Start () {
 		needMoreText.color = new Color (1f, 1f, 1f, 0f);

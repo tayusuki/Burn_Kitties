@@ -34,6 +34,8 @@ public class LevelButton : MonoBehaviour {
 
 	public void OnClick()
     {
+        if (GameObject.FindObjectOfType<LevelVictory>() != null && GameObject.FindObjectOfType<LevelVictory>().level == 11)
+            GameManager.beatGame = true;
         SceneManager.LoadScene(levelNumber.ToString());
     }
 

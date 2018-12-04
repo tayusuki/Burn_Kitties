@@ -34,6 +34,8 @@ public class LevelVictory : MonoBehaviour {
 
         if(level == 11)
         {
+            GameManager.beatGame = true;
+            Save.SaveNow();
             SceneManager.LoadScene("LevelSelector");
         }
 
