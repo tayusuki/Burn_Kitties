@@ -42,6 +42,9 @@ public class CatBehavior : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
 		runTime = runTimer;
+		if (runSpeed < 0) {
+			Flip ();
+		}
 	}
 	
 	void Update () {
