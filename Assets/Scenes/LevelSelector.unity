@@ -166,6 +166,7 @@ MonoBehaviour:
   levelSelector: 
   isLocked: 0
   maxExtras: 10
+  isConfirmation: 0
 --- !u!114 &59763603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +456,7 @@ MonoBehaviour:
   levelSelector: 
   isLocked: 0
   maxExtras: 10
+  isConfirmation: 0
 --- !u!114 &257636698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1029,6 +1031,7 @@ MonoBehaviour:
   levelSelector: 
   isLocked: 0
   maxExtras: 10
+  isConfirmation: 0
 --- !u!114 &805786386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1168,6 +1171,7 @@ MonoBehaviour:
   levelSelector: 
   isLocked: 0
   maxExtras: 10
+  isConfirmation: 0
 --- !u!114 &824073013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1307,6 +1311,7 @@ MonoBehaviour:
   levelSelector: 
   isLocked: 0
   maxExtras: 10
+  isConfirmation: 0
 --- !u!114 &834679271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1671,6 +1676,7 @@ MonoBehaviour:
   levelSelector: 
   isLocked: 0
   maxExtras: 10
+  isConfirmation: 0
 --- !u!114 &1312861076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1810,6 +1816,7 @@ MonoBehaviour:
   levelSelector: 
   isLocked: 0
   maxExtras: 10
+  isConfirmation: 0
 --- !u!114 &1326742743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1949,6 +1956,7 @@ MonoBehaviour:
   levelSelector: 
   isLocked: 0
   maxExtras: 10
+  isConfirmation: 0
 --- !u!114 &1382783311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2318,6 +2326,7 @@ MonoBehaviour:
   levelSelector: 
   isLocked: 0
   maxExtras: 10
+  isConfirmation: 0
 --- !u!114 &1599197419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2702,6 +2711,7 @@ MonoBehaviour:
   levelSelector: 
   isLocked: 0
   maxExtras: 10
+  isConfirmation: 0
 --- !u!114 &1747990657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3055,6 +3065,7 @@ MonoBehaviour:
   levelSelector: 
   isLocked: 0
   maxExtras: 10
+  isConfirmation: 0
 --- !u!114 &1925835414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3194,6 +3205,7 @@ MonoBehaviour:
   levelSelector: 
   isLocked: 0
   maxExtras: 10
+  isConfirmation: 0
 --- !u!114 &1969017766
 MonoBehaviour:
   m_ObjectHideFlags: 0
